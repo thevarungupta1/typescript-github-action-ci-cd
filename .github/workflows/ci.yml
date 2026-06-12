@@ -10,7 +10,7 @@ on:
 env:
   APP_NAME: Typescript GitHub Actions Demo
   APP_ENV: ci
-  API_URL: https://api.example.com
+  API_URL: ${{ secrets.API_KEY}}
 
 
 jobs:
