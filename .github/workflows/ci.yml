@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [ main, master ]
 
+
+env:
+  APP_NAME: Typescript GitHub Actions Demo
+  APP_ENV: ci
+  API_URL: https://api.example.com
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +29,12 @@ jobs:
       - name: Install dependenices
         run: npm ci
 
+      - name: Print environment variables
+        run: |
+          echo "APP_NAME: $APP_NAME"
+          echo "APP_ENV: $APP_ENV"
+          echo "API_URL: $API_URL"
+
       - name: Build Typescript project
         run: npm run build
 
@@ -34,11 +47,11 @@ jobs:
       #     name: typescript-build
       #     path: dist
 
-      - name: Deploy application
-        run: npm run deploy
+      # - name: Deploy application
+      #   run: npm run deploy
 
-      - name: Upload deployment folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: deployment-output
-          path: deployment-output
+      # - name: Upload deployment folder
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: deployment-output
+      #     path: deployment-output
