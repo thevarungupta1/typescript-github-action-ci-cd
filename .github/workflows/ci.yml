@@ -36,3 +36,9 @@ jobs:
 
       - name: Deploy application
         run: npm run deploy
+
+      - name: Upload deployment folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-output
+          path: deployment-output
