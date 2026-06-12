@@ -29,6 +29,15 @@ jobs:
       - name: Install dependenices
         run: npm ci
 
+      - name: Verify secret availability
+        run: |
+          if [ -z "$API_URL" ]; then
+            echo "API_URL secret is not available"
+            exit 1
+          else
+            echo "API_URL secret is available"
+          fi
+
       - name: Print environment variables
         run: |
           echo "APP_NAME: $APP_NAME"
